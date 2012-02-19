@@ -117,6 +117,8 @@ void* ofxBox2dBaseShape::setData(void*data) {
 	else {
 		ofLog(OF_LOG_NOTICE, "- must have a valid body -");
 	}
+    
+    return NULL;
 }
 
 //------------------------------------------------ 
@@ -157,6 +159,7 @@ float ofxBox2dBaseShape::getRotation() {
 	if(body != NULL) {
 		return ofRadToDeg(body->GetAngle());
 	}
+    return 0;
 }
 
 
