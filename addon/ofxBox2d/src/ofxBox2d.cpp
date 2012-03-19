@@ -68,9 +68,9 @@ void ofxBox2d::setContactListener(ofxBox2dContactListener * listener) {
 // ------------------------------------------------------ grab shapes Events
 void ofxBox2d::registerGrabbing() {
 #ifdef TARGET_OF_IPHONE
-	ofAddListener(ofEvents.touchDown, this, &ofxBox2d::touchDown);
-	ofAddListener(ofEvents.touchMoved, this, &ofxBox2d::touchMoved);
-	ofAddListener(ofEvents.touchUp, this, &ofxBox2d::touchUp);
+	ofAddListener(ofEvents().touchDown, this, &ofxBox2d::touchDown);
+	ofAddListener(ofEvents().touchMoved, this, &ofxBox2d::touchMoved);
+	ofAddListener(ofEvents().touchUp, this, &ofxBox2d::touchUp);
 #else
 	ofAddListener(ofEvents.mousePressed, this, &ofxBox2d::mousePressed);
 	ofAddListener(ofEvents.mouseDragged, this, &ofxBox2d::mouseDragged);
