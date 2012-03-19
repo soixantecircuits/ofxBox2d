@@ -214,13 +214,14 @@ void ofxBox2dPolygon::create(b2World * b2dworld) {
 			}	
 		}
 		else {
-			b2Vec2 verts[size()-1];
+			b2Vec2 * verts = new b2Vec2[size()-1];
 			for (int i=0; i<size(); i++) {
 				ofVec2f p = getVertices()[i] / OFX_BOX2D_SCALE;
 				verts[i]  = b2Vec2(p.x, p.y);
 			}
 			b2PolygonShape	shape;
 			shape.Set(verts, size()-1);
+            delete verts;
 			
 			fixture.shape		= &shape;
 			fixture.density		= density;
