@@ -72,9 +72,9 @@ void ofxBox2d::registerGrabbing() {
 	ofAddListener(ofEvents().touchMoved, this, &ofxBox2d::touchMoved);
 	ofAddListener(ofEvents().touchUp, this, &ofxBox2d::touchUp);
 #else
-	ofAddListener(ofEvents.mousePressed, this, &ofxBox2d::mousePressed);
-	ofAddListener(ofEvents.mouseDragged, this, &ofxBox2d::mouseDragged);
-	ofAddListener(ofEvents.mouseReleased, this, &ofxBox2d::mouseReleased);
+	ofAddListener(ofEvents().mousePressed, this, &ofxBox2d::mousePressed);
+	ofAddListener(ofEvents().mouseDragged, this, &ofxBox2d::mouseDragged);
+	ofAddListener(ofEvents().mouseReleased, this, &ofxBox2d::mouseReleased);
 #endif
 }
 
