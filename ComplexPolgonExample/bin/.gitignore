@@ -1,5 +1,5 @@
 # Ignore everything in here apart from the .gitignore file
 *
 !.gitignore
-!sfx/*
-!sfx
+!data
+!data/*
