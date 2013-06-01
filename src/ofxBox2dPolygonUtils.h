@@ -300,7 +300,7 @@ static vector <TriangleShape> triangulatePolygonWithOutline(const ofPolyline &pt
 	// now triangluate from the polyline
 	vector <Delaunay::Point>	delaunayPts;
 	Delaunay::Point				tempP;
-	for(int i=0; i<pts.size(); i++) {
+	for(int i=0; i<(int)pts.size(); i++) {
 		tempP[0] = pts[i].x;
 		tempP[1] = pts[i].y;
 		delaunayPts.push_back(tempP);
@@ -373,7 +373,7 @@ static vector <TriangleShape> triangulatePolygon(const vector <ofVec2f> &ptsIn, 
 	// now triangluate from the polyline (3)
 	vector <Delaunay::Point>	delaunayPts;
 	Delaunay::Point				tempP;
-	for(int i=0; i<pts.size(); i++) {
+	for(int i=0; i<(int)pts.size(); i++) {
 		tempP[0] = pts[i].x;
 		tempP[1] = pts[i].y;
 		delaunayPts.push_back(tempP);

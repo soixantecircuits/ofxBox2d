@@ -201,10 +201,10 @@ void ofxBox2dPolygon::create(b2World * b2dworld) {
 	else {
 		if(bSetAsEdge) {
 			for (int i=1; i<size(); i++) {
-				b2PolygonShape	shape;
+				b2EdgeShape	shape;
 				b2Vec2 a = screenPtToWorldPt(getVertices()[i-1]);
 				b2Vec2 b = screenPtToWorldPt(getVertices()[i]);
-				shape.SetAsEdge(a, b);
+				shape.Set(a, b);
 				fixture.shape		= &shape;
 				fixture.density		= density;
 				fixture.restitution = bounce;
@@ -307,18 +307,25 @@ void ofxBox2dPolygon::draw() {
 	const b2Transform& xf = body->GetTransform();
 	
 	for (b2Fixture * f = body->GetFixtureList(); f; f = f->GetNext()) {
-		b2PolygonShape * poly = (b2PolygonShape*)f->GetShape();
-		
-		if(poly) {
-			drawShape.clear();
-			for(int i=0; i<poly->GetVertexCount(); i++) {
-				b2Vec2 pt = b2Mul(xf, poly->GetVertex(i));
-				drawShape.addVertex(pt.x*OFX_BOX2D_SCALE, pt.y*OFX_BOX2D_SCALE);
-			}
-			if(isClosed()) drawShape.close();
-			drawShape.draw();
-		
-		}
+
+		if(!bSetAsEdge) {
+      b2PolygonShape * poly = (b2PolygonShape*)f->GetShape();
+      
+      if(poly) {
+        drawShape.clear();
+        for(int i=0; i<poly->GetVertexCount(); i++) {
+          b2Vec2 pt = b2Mul(xf, poly->GetVertex(i));
+          drawShape.addVertex(pt.x*OFX_BOX2D_SCALE, pt.y*OFX_BOX2D_SCALE);
+        }
+        if(isClosed()) drawShape.close();
+        drawShape.draw();
+      
+      }
+    }
+    else {
+      // TODO
+      // edgeshapes are not draw on screen for now
+    }
 	}
 	
 	

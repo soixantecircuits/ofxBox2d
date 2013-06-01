@@ -41,7 +41,8 @@ void ofxBox2d::init() {
 	//worldAABB.lowerBound.Set(-100.0f, -100.0f);
 	//worldAABB.upperBound.Set(100.0f, 100.0f);
 	
-	world = new b2World(b2Vec2(gravity.x, gravity.y), doSleep);
+	world = new b2World(b2Vec2(gravity.x, gravity.y));
+  world->SetAllowSleeping(doSleep);
 	world->SetDebugDraw(&debugRender);
 	
 	
@@ -183,8 +184,8 @@ void ofxBox2d::createGround(float x1, float y1, float x2, float y2) {
 	b2BodyDef bd;
 	ground = world->CreateBody(&bd);
 	
-	b2PolygonShape shape;
-	shape.SetAsEdge(b2Vec2(x1/OFX_BOX2D_SCALE, y1/OFX_BOX2D_SCALE), b2Vec2(x2/OFX_BOX2D_SCALE, y2/OFX_BOX2D_SCALE));
+	b2EdgeShape shape;
+	shape.Set(b2Vec2(x1/OFX_BOX2D_SCALE, y1/OFX_BOX2D_SCALE), b2Vec2(x2/OFX_BOX2D_SCALE, y2/OFX_BOX2D_SCALE));
 	ground->CreateFixture(&shape, 0.0f);
 
 }
@@ -207,25 +208,25 @@ void ofxBox2d::createBounds(float x, float y, float w, float h) {
 	bd.position.Set(0, 0);
 	ground = world->CreateBody(&bd);	
 	
-	b2PolygonShape shape;
+	b2EdgeShape shape;
 	
 	ofRectangle rec(x/OFX_BOX2D_SCALE, y/OFX_BOX2D_SCALE, w/OFX_BOX2D_SCALE, h/OFX_BOX2D_SCALE);
 	
 	
 	//right wall
-	shape.SetAsEdge(b2Vec2(rec.x+rec.width, rec.y), b2Vec2(rec.x+rec.width, rec.y+rec.height));
+	shape.Set(b2Vec2(rec.x+rec.width, rec.y), b2Vec2(rec.x+rec.width, rec.y+rec.height));
 	ground->CreateFixture(&shape, 0.0f);
 	
 	//left wall
-	shape.SetAsEdge(b2Vec2(rec.x, rec.y), b2Vec2(rec.x, rec.y+rec.height));
+	shape.Set(b2Vec2(rec.x, rec.y), b2Vec2(rec.x, rec.y+rec.height));
 	ground->CreateFixture(&shape, 0.0f);
 	
 	// top wall
-	shape.SetAsEdge(b2Vec2(rec.x, rec.y), b2Vec2(rec.x+rec.width, rec.y));
+	shape.Set(b2Vec2(rec.x, rec.y), b2Vec2(rec.x+rec.width, rec.y));
 	ground->CreateFixture(&shape, 0.0f);
 	
 	// bottom wall
-	shape.SetAsEdge(b2Vec2(rec.x, rec.y+rec.height), b2Vec2(rec.x+rec.width, rec.y+rec.height));
+	shape.Set(b2Vec2(rec.x, rec.y+rec.height), b2Vec2(rec.x+rec.width, rec.y+rec.height));
 	ground->CreateFixture(&shape, 0.0f);
 	
 }
