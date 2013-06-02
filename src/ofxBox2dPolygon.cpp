@@ -323,8 +323,6 @@ void ofxBox2dPolygon::draw() {
       }
     }
     else {
-      // TODO
-      // edgeshapes are not draw on screen for now
       b2EdgeShape * poly = (b2EdgeShape*)f->GetShape();
       
       if(poly) {

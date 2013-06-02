@@ -297,15 +297,15 @@ void ofxBox2d::drawGround() {
 	
 	const b2Transform& xf = ground->GetTransform();
 	for (b2Fixture* f = ground->GetFixtureList(); f; f = f->GetNext()) {
-		b2PolygonShape* poly = (b2PolygonShape*)f->GetShape();
+		b2EdgeShape* poly = (b2EdgeShape*)f->GetShape();
 		if(poly) {
 			ofNoFill();
 			ofSetColor(120, 0, 120);
 			ofBeginShape();
-			for(int i=0; i<poly->m_vertexCount; i++) {
-				b2Vec2 pt = b2Mul(xf, poly->m_vertices[i]);
-				ofVertex(pt.x*OFX_BOX2D_SCALE, pt.y*OFX_BOX2D_SCALE);
-			}
+      b2Vec2 pt = b2Mul(xf, poly->m_vertex1);
+      ofVertex(pt.x*OFX_BOX2D_SCALE, pt.y*OFX_BOX2D_SCALE);
+      pt = b2Mul(xf, poly->m_vertex2);
+      ofVertex(pt.x*OFX_BOX2D_SCALE, pt.y*OFX_BOX2D_SCALE);
 			ofEndShape(true);
 		}
 	}
