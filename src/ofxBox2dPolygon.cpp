@@ -325,6 +325,19 @@ void ofxBox2dPolygon::draw() {
     else {
       // TODO
       // edgeshapes are not draw on screen for now
+      b2EdgeShape * poly = (b2EdgeShape*)f->GetShape();
+      
+      if(poly) {
+        drawShape.clear();
+        b2Vec2 pt = b2Mul(xf, poly->m_vertex1);
+        drawShape.addVertex(pt.x*OFX_BOX2D_SCALE, pt.y*OFX_BOX2D_SCALE);
+        pt = b2Mul(xf, poly->m_vertex2);
+        drawShape.addVertex(pt.x*OFX_BOX2D_SCALE, pt.y*OFX_BOX2D_SCALE);
+        if(isClosed()) drawShape.close();
+        drawShape.draw();
+      
+      }
+
     }
 	}
 	
