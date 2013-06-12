@@ -18,6 +18,8 @@ public:
 	float			density;
 	float			bounce;
 	float			friction;
+  float     fixedRotation;
+  float     angularDamping;
 	ofxBox2dBaseShape();	
 	
 	//----------------------------------------

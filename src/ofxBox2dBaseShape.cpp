@@ -21,6 +21,8 @@ ofxBox2dBaseShape::ofxBox2dBaseShape() {
 	density     = 0.0;
 	bounce		= 0.0;
 	friction	= 0.0;
+  fixedRotation = false;
+  angularDamping = 0;
 	bodyDef.allowSleep = true;
 }
 
@@ -146,12 +148,13 @@ void ofxBox2dBaseShape::enableGravity(bool b) {
 
 //------------------------------------------------ 
 void ofxBox2dBaseShape::setFixedRotation(bool b) {
-	bodyDef.fixedRotation = b;
+	//bodyDef.fixedRotation = b;
+	fixedRotation = b;
 }
 
 //------------------------------------------------ 
 void ofxBox2dBaseShape::setRotationFriction(float f) {
-	bodyDef.angularDamping = f;
+	angularDamping = f;
 }
 
 //------------------------------------------------

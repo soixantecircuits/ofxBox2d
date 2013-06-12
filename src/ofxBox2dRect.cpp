@@ -51,6 +51,8 @@ void ofxBox2dRect::setup(b2World * b2dworld, float x, float y, float w, float h)
 	else
 		bodyDef.type	= b2_dynamicBody;
 	bodyDef.position.Set(x/OFX_BOX2D_SCALE, y/OFX_BOX2D_SCALE);	
+  bodyDef.fixedRotation = fixedRotation;
+  bodyDef.angularDamping = angularDamping;
 	
 	
 	body = b2dworld->CreateBody(&bodyDef);
