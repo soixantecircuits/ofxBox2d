@@ -61,7 +61,7 @@ void ofxBox2dRect::setup(b2World * b2dworld, float x, float y, float w, float h)
 	body->CreateFixture(&fixture);
 
   dead = false;
-  alive = true;
+  //alive = true;
 	
 }
 
