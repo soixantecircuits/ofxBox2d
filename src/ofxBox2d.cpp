@@ -247,39 +247,39 @@ void ofxBox2d::update() {
 	if(world == NULL) return;
 	// destroy the object if we are out of the bounds
 	if(bCheckBounds) {
-		/*
-		 float top = 0;
+		 float top = -ofGetWidth();
 		 float bottom = ofGetHeight();
-		 float right = ofGetWidth();
-		 float left = 0;
+		 float right = ofGetWidth()+100;
+		 float left = 0-100;
 		 
 		 b2Body* node = world->GetBodyList();
 		 while(node) {
-		 b2Body* b = node;
-		 node = node->GetNext();
-		 b2Vec2 p = b->GetPosition();
-		 ofxBox2dBaseShape* base = (ofxBox2dBaseShape*)b->GetUserData();
-		 if(base) {
-		 //printf("dead:%i\n", base->dead);
-		 
-		 if(p.y*OFX_BOX2D_SCALE > bottom) {
-		 base->dead = true;
-		 world->DestroyBody(b);
-		 }
-		 if(p.y*OFX_BOX2D_SCALE < top) {
-		 base->dead = true;
-		 world->DestroyBody(b);
-		 }
-		 if(p.x*OFX_BOX2D_SCALE > right) {
-		 base->dead = true;
-		 world->DestroyBody(b);
-		 }
-		 if(p.x*OFX_BOX2D_SCALE < left) {
-		 base->dead = true;
-		 world->DestroyBody(b);
-		 }
-		 */
-		
+       b2Body* b = node;
+       node = node->GetNext();
+       b2Vec2 p = b->GetPosition();
+       ofxBox2dBaseShape* base = (ofxBox2dBaseShape*)b->GetUserData();
+       if(base) {
+         printf("dead:%i\n", base->dead);
+         
+         if(p.y*OFX_BOX2D_SCALE > bottom) {
+         base->dead = true;
+         world->DestroyBody(b);
+         }
+         if(p.y*OFX_BOX2D_SCALE < top) {
+         base->dead = true;
+         world->DestroyBody(b);
+         }
+         if(p.x*OFX_BOX2D_SCALE > right) {
+         base->dead = true;
+         world->DestroyBody(b);
+         }
+         if(p.x*OFX_BOX2D_SCALE < left) {
+         base->dead = true;
+         world->DestroyBody(b);
+         }
+       }
+     }
+      
 		
 	}
 	

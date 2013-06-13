@@ -6,12 +6,12 @@
 #define OFX_BOX2D_SCALE 30.0f
 
 
-static float b2dNum(float f) {
+inline float b2dNum(float f) {
 	return (float)f/OFX_BOX2D_SCALE;	
 }
 
 
-static b2Vec2 screenPtToWorldPt(ofVec2f p) {
+inline b2Vec2 screenPtToWorldPt(ofVec2f p) {
 	return b2Vec2(p.x/OFX_BOX2D_SCALE, p.y/OFX_BOX2D_SCALE);
 }
 
