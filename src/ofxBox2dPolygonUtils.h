@@ -252,7 +252,7 @@ static ofRectangle getPolygonBounds(const vector <ofVec2f> & vertices) {
 	float farRight  = -100000;
 	float bottom    = -100000;
 	
-	for (int i=0; i<vertices.size(); i++) {
+	for (int i=0; i<(int)vertices.size(); i++) {
 		if( vertices[i].x < bounds.x ) bounds.x = vertices[i].x;	
 		if( vertices[i].y < bounds.y ) bounds.y = vertices[i].y;
 		if( vertices[i].x > farRight ) farRight = vertices[i].x; 
@@ -300,7 +300,7 @@ static vector <TriangleShape> triangulatePolygonWithOutline(const ofPolyline &pt
 	// now triangluate from the polyline
 	vector <Delaunay::Point>	delaunayPts;
 	Delaunay::Point				tempP;
-	for(int i=0; i<pts.size(); i++) {
+	for(int i=0; i<(int)pts.size(); i++) {
 		tempP[0] = pts[i].x;
 		tempP[1] = pts[i].y;
 		delaunayPts.push_back(tempP);
@@ -373,7 +373,7 @@ static vector <TriangleShape> triangulatePolygon(const vector <ofVec2f> &ptsIn, 
 	// now triangluate from the polyline (3)
 	vector <Delaunay::Point>	delaunayPts;
 	Delaunay::Point				tempP;
-	for(int i=0; i<pts.size(); i++) {
+	for(int i=0; i<(int)pts.size(); i++) {
 		tempP[0] = pts[i].x;
 		tempP[1] = pts[i].y;
 		delaunayPts.push_back(tempP);
@@ -430,7 +430,7 @@ static vector <TriangleShape> triangulatePolygon(const vector <ofVec2f> &ptsIn, 
 //-------------------------------------------------------------------
 static vector <TriangleShape> triangulatePolygon(const ofPolyline &poly, bool addPointsInside=false, int amt=100) {
 	vector <ofVec2f> pts;
-	for (int i=0; i<poly.size(); i++) {
+	for (int i=0; i<(int)poly.size(); i++) {
 		pts.push_back(poly[i]);
 	}
 	return triangulatePolygon(pts, addPointsInside, amt);

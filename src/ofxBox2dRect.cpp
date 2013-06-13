@@ -29,8 +29,8 @@ void ofxBox2dRect::setup(b2World * b2dworld, float x, float y, float w, float h)
 		return;
 	}
 	
-	if (OF_RECTMODE_CORNER) {
-		w/=2; h/=2;
+	if (ofGetRectMode() == OF_RECTMODE_CORNER) {
+		//w/=2; h/=2; // ?? this is wrong, a size doesn't change with a rectmode...
 		x += w; y += h;
 	}
 	
@@ -38,7 +38,9 @@ void ofxBox2dRect::setup(b2World * b2dworld, float x, float y, float w, float h)
 	_height	= h;
 	
 	b2PolygonShape shape;
-	shape.SetAsBox(w/OFX_BOX2D_SCALE, h/OFX_BOX2D_SCALE);
+  // set as box takes half width 
+  // http://www.box2d.org/manual.html 2.2 Creating a Ground Box
+	shape.SetAsBox(w/2./OFX_BOX2D_SCALE, h/2./OFX_BOX2D_SCALE);
 	
 	fixture.shape		= &shape;
 	fixture.density		= density;
