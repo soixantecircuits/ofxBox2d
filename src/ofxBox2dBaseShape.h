@@ -66,6 +66,7 @@ public:
 	virtual void setFixedRotation(bool b);
 	virtual void setRotationFriction(float f);
 	float getRotation();
+  void setRotation(float r);
 	
 	//------------------------------------------------ 
 	virtual void setPosition(float x, float y);

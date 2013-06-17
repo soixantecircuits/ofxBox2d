@@ -55,7 +55,7 @@ ofxBox2dBaseShape::~ofxBox2dBaseShape() {
 bool ofxBox2dBaseShape::isBody() {
 	if (body == NULL) {
 		//cout << __FILE__ << __func__ << endl;
-		ofLog(OF_LOG_ERROR, "- body is not defined -");
+		//ofLog(OF_LOG_ERROR, "- body is not defined -");
 		return false;
 	}
 	return true;
@@ -164,7 +164,16 @@ float ofxBox2dBaseShape::getRotation() {
 	}
     return 0;
 }
-
+//------------------------------------------------ 
+void ofxBox2dBaseShape::setRotation(float r) {
+	if(!body || body == NULL) {
+		ofLog(OF_LOG_NOTICE, "- Body is NULL -");
+		return;
+	}
+	body->SetTransform(body->GetPosition(), ofDegToRad(r));
+	//body->SetLinearVelocity(b2Vec2(0, 0)); // maybe bring this back...
+	body->SetAwake(false); // this sounds backwards but that is what the doc says todo...
+}
 
 //------------------------------------------------ 
 void ofxBox2dBaseShape::setPosition(float x, float y) {

@@ -108,8 +108,8 @@ public:
 	void		createBounds(float x=0, float y=0, float w=ofGetWidth(), float h=ofGetHeight());
 	void		createBounds(ofRectangle &rec);
 	
-	void		createGround(const ofPoint & p1, const ofPoint & p2);
-	void		createGround(float x1=0, float y1=ofGetHeight(), float x2=ofGetWidth(), float y2=ofGetHeight());
+	b2Body*		createGround(const ofPoint & p1, const ofPoint & p2);
+	b2Body*		createGround(float x1=0, float y1=ofGetHeight(), float x2=ofGetWidth(), float y2=ofGetHeight());
 	void		checkBounds(bool b);
 	
 	void		update(); 

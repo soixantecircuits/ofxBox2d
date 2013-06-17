@@ -173,11 +173,11 @@ void ofxBox2d::setBounds(ofPoint lowBounds, ofPoint upBounds) {
 }
 
 // ------------------------------------------------------ create Ground
-void ofxBox2d::createGround(float x1, float y1, float x2, float y2) {
+b2Body* ofxBox2d::createGround(float x1, float y1, float x2, float y2) {
 	
 	if(world == NULL) {
 		ofLog(OF_LOG_NOTICE, "- Need a world call init first! -\n");
-		return;
+		return NULL;
 	}
 	
 	b2BodyDef bd;
@@ -186,11 +186,12 @@ void ofxBox2d::createGround(float x1, float y1, float x2, float y2) {
 	b2PolygonShape shape;
 	shape.SetAsEdge(b2Vec2(x1/OFX_BOX2D_SCALE, y1/OFX_BOX2D_SCALE), b2Vec2(x2/OFX_BOX2D_SCALE, y2/OFX_BOX2D_SCALE));
 	ground->CreateFixture(&shape, 0.0f);
+  return ground;
 
 }
 // ------------------------------------------------------ create Ground
-void ofxBox2d::createGround(const ofPoint & p1, const ofPoint & p2) {
-	createGround(p1.x, p1.y, p2.x, p2.y);
+b2Body* ofxBox2d::createGround(const ofPoint & p1, const ofPoint & p2) {
+	return createGround(p1.x, p1.y, p2.x, p2.y);
 }
 
 // ------------------------------------------------------ create bounds
