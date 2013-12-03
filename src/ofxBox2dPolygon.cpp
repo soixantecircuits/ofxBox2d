@@ -154,7 +154,7 @@ void ofxBox2dPolygon::triangulate(float resampleAmt, int nPointsInside) {
 
 
 //----------------------------------------
-void ofxBox2dPolygon::create(b2World * b2dworld) {
+void ofxBox2dPolygon::create(b2World * b2dworld, float x, float y) {
 
 	if(size() < 3) {
 		printf("need at least 3 points\n");
@@ -169,6 +169,7 @@ void ofxBox2dPolygon::create(b2World * b2dworld) {
 	// create the body from the world (1)
 	b2BodyDef		bd;
 	bd.type			= density <= 0.0 ? b2_staticBody : b2_dynamicBody;
+	bd.position.Set(x/OFX_BOX2D_SCALE, y/OFX_BOX2D_SCALE);
 	body			= b2dworld->CreateBody(&bd);
 
 	if(bIsTriangulated) {
@@ -300,6 +301,7 @@ void ofxBox2dPolygon::draw() {
 	//ofVec2f centroid = getCenter();
 	//ofCircle(centroid.x, centroid.y, 2);
 	
+	ofFill();
 	if(body == NULL) {
 		return;	
 	}

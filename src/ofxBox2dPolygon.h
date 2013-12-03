@@ -54,7 +54,8 @@ public:
 
 	//----------------------------------------
 	void updateShape();
-	void create(b2World * b2dworld);
+	void create(b2World * b2dworld, float x, float y);
+
 	void draw();
 	
 };
